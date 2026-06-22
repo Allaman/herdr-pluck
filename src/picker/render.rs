@@ -1,3 +1,4 @@
+use crate::config::compile_pattern_specs;
 use crate::hints::{assign_hints, HintAssignments};
 use crate::model::{PickerOutcome, PickerSnapshot, RenderLine, RenderSpan, RenderStyle};
 use crate::patterns::find_matches;
@@ -35,8 +36,10 @@ pub fn build_picker_view(snapshot: &PickerSnapshot) -> PickerView {
         .as_ref()
         .map(|viewport| viewport.logical_lines.as_slice())
         .unwrap_or(&snapshot.source.logical_lines);
-    let matches = find_matches(logical_lines);
+    let custom_patterns = compile_pattern_specs(&snapshot.custom_patterns);
+    let matches = find_matches(logical_lines, &custom_patterns);
     let assignments = assign_hints(matches.clone());
+
     let lines = if assignments.is_empty() {
         no_matches_view(
             snapshot.source.target_content_width,
@@ -171,6 +174,7 @@ mod tests {
                 return_tab_id: "t1".to_string(),
                 return_pane_id: PaneId::new("p1"),
             },
+            custom_patterns: Vec::new(),
         }
     }
 
