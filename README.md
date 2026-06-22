@@ -4,6 +4,8 @@ Herdr Pluck is a Herdr plugin for quickly copying visible terminal tokens with s
 
 Invoke the plugin while a pane is focused, type the displayed hint for the token you want, and the selected text is copied to your system clipboard. Escape or Ctrl-C cancels.
 
+![Herdr Pluck picker overlay](docs/images/pluck-picker.png)
+
 ## Requirements
 
 - Herdr 0.7.0 or newer
