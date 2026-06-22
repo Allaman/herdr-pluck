@@ -17,6 +17,18 @@ Invoke the plugin while a pane is focused, type the displayed hint for the token
 
 ## Install
 
+From the remote repository:
+
+```bash
+herdr plugin install rmarganti/herdr-pluck
+```
+
+To install a specific branch, tag, or commit, pass `--ref`:
+
+```bash
+herdr plugin install rmarganti/herdr-pluck --ref main
+```
+
 From this checkout:
 
 ```bash
